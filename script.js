@@ -1,12 +1,14 @@
 console.log("Task1");
 
 function formatFullName(firstName, lastName) {
+
   if (!firstName || !lastName) {
     return "Invalid name input.";
   }
 
   function upperCasedName(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    let upperCasedNames = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    return upperCasedNames;
   }
 
   const formattedFirstName = upperCasedName(firstName);
@@ -16,30 +18,39 @@ function formatFullName(firstName, lastName) {
   return `${formattedLastName}, ${formattedFirstName}`;
 }
 
-console.log(formatFullName("kibreab", "solomon"));
+const firstInput = prompt('Enter first name:');
+const secondInput = prompt('Enter last name:');
+
+console.log(formatFullName(firstInput, secondInput));
 
 //=============================================================================================================
 console.log("Task2");
 
- function calculateTotalCost(p, q, t) {
+ function calculateTotalCost(price, quantity, taxRate) {
 
    function isValidNumber(input) {
      const number = Number(input);
      return !isNaN(number);
    }
+
    if (!isValidNumber(p) || !isValidNumber(q) || !isValidNumber(t)) {
      return "Invalid Input";
     
    }
-   const price = Number(p);
-   const quantity = Number(q);
-   const taxRate = Number(t);
+
+   const clearPrice = Number(p);
+   const clearQuantity = Number(q);
+   const clearTaxRate = Number(t);
  
-  totalCost = (price * quantity) * (1 + taxRate)
+  const totalCost = (clearPrice * clearQuantity) * (1 + clearTaxRate)
    return totalCost
  }
 
- console.log(calculateTotalCost(100, 2, 0.1));
+ const priceInput = parseFloat(prompt('Enter price:'));
+ const quantityInput = parseFloat(prompt('Enter quantity:'));
+ const taxInput = parseFloat(prompt('Enter tax:'));
+
+ console.log(calculateTotalCost(priceInput, quantityInput, taxInput));
 
 //=============================================================================================================
 console.log("Task3");
@@ -54,24 +65,25 @@ function checkEligibility(age, isEmployed){
     }
 }
 
-console.log(checkEligibility(19, false));
+const ageInput = prompt("What is your age?")
+const employmentInput = prompt("You are employed. True or False")
+
+console.log(checkEligibility(ageInput, employmentInput));
 
 
 //=============================================================================================================
 console.log("Task4");
 
 function calculateTotalCost(price, quantity, taxRate, discount) {
-
-   
   function isValidNumber(input) {
     const number = Number(input);
     return !isNaN(number) && input !== '';
   }
   if (!isValidNumber(price) || !isValidNumber(quantity) || !isValidNumber(taxRate)) {
-    return "Invalid Input";
+    return "Invalid Input Number";
     
   }
-
+  
   let hasDiscount = false;
   if(discount !== undefined){
     hasDiscount = isValidNumber(discount);
@@ -79,14 +91,19 @@ function calculateTotalCost(price, quantity, taxRate, discount) {
         return "Invalid Input";
     }
   }
-  const priceM = Number(price);
-  const quantityM = Number(quantity);
-  const taxRateM = Number(taxRate);
-  const discountM = hasDiscount ? Number(discount) : 0;
+  const cleanPrice = Number(price);
+  const cleanQuantity = Number(quantity);
+  const CleanTaxRate = Number(taxRate);
+  const cleanDiscount = hasDiscount ? Number(discount) : 0;
  
-     totalCost = (price * quantity - discountM) * (1 + taxRate)
+    const totalCost = (cleanPrice * cleanQuantity - cleanDiscount) * (1 + CleanTaxRate)
  
   return totalCost
 }
 
-console.log(calculateTotalCost(100, 2, 0.1, 15));
+ const priceInput2 = parseFloat(prompt('Enter price:'));
+ const quantityInput2 = parseFloat(prompt('Enter quantity:'));
+ const taxInput2 = parseFloat(prompt('Enter tax:'));
+ const discountInput2 = parseFloat(prompt('Enter discount:'));
+
+console.log(calculateTotalCost(priceInput2, quantityInput2, taxInput2, discountInput2));
